@@ -1,0 +1,11 @@
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: var(--padding-top);
+  padding-bottom: var(--padding-bottom);
+}
+
+.loading__text {
+  margin-left: 10px;
+}

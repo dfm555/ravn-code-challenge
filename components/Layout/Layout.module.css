@@ -1,0 +1,15 @@
+.layout {
+  max-width: var(--max-width-content);
+  margin: 0 auto;
+}
+
+.layout__header {
+  background: var(--ravn-black);
+  padding: var(--padding-top) var(--padding-right) var(--padding-bottom)
+    var(--padding-left);
+}
+
+.layout__content {
+  padding-right: var(--padding-right);
+  padding-left: var(--padding-left);
+}

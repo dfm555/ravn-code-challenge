@@ -1,0 +1,20 @@
+.icon {
+  position: relative;
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+.icon .spinner {
+  animation: rotate 2s linear infinite;
+}
+
+.icon--placeholder {
+  background: var(--font-color-gray);
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}

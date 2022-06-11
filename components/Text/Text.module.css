@@ -1,0 +1,32 @@
+.text {
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-normal);
+}
+
+.text--black {
+  color: var(--font-color-black);
+}
+
+.text--red {
+  color: var(--font-color-red);
+}
+
+.text--white {
+  color: var(--font-color-white);
+}
+
+.text--center {
+  text-align: center;
+}
+
+.text--right {
+  text-align: right;
+}
+
+.text--lg {
+  font-size: var(--font-size-lg);
+}
+
+.text--bold {
+  font-weight: var(--font-weight-bold);
+}
