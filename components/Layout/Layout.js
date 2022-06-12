@@ -5,14 +5,18 @@ import Header from './Header'
 
 import style from './Layout.module.css'
 
-const Layout = ({ headerTitle, children }) => {
+const Layout = ({ headerTitle, hasArrowLeft, children }) => {
   return (
     <>
       <Head>
         <title>ravn-code-challenge</title>
       </Head>
       <div className={style.layout}>
-        <Header className={style.layout__header} title={headerTitle} />
+        <Header
+          className={style.layout__header}
+          title={headerTitle}
+          hasArrowLeft={hasArrowLeft}
+        />
         <main className={style.layout__content}>{children}</main>
       </div>
     </>
@@ -21,7 +25,8 @@ const Layout = ({ headerTitle, children }) => {
 
 Layout.propTypes = {
   headerTitle: PropTypes.element,
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
+  hasArrowLeft: PropTypes.bool
 }
 
 export default Layout

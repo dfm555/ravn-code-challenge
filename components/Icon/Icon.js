@@ -10,9 +10,13 @@ const iconCollection = {
   spinner: '/iconCollection/spinner.svg'
 }
 
-const Icon = ({ name }) => {
+const Icon = ({ name, size }) => {
   return name ? (
-    <div className={styles.icon}>
+    <div
+      className={classNames(styles.icon, {
+        [`${styles[`icon--${size}`]}`]: size
+      })}
+    >
       <Image
         className={classNames(styles.icon, {
           [styles['spinner']]: name === 'spinner'
@@ -29,7 +33,8 @@ const Icon = ({ name }) => {
 }
 
 Icon.propTypes = {
-  name: PropTypes.oneOf(['angleRight', 'arrowLeft', 'spinner']).isRequired
+  name: PropTypes.oneOf(['angleRight', 'arrowLeft', 'spinner']).isRequired,
+  size: PropTypes.oneOf(['sm', 'md', 'lg'])
 }
 
 export default Icon

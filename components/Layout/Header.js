@@ -1,13 +1,31 @@
-import React from 'react'
+import Link from 'next/link'
 import PropTypes from 'prop-types'
 
-const Header = ({ title, className }) => {
-  return <header className={className}>{title}</header>
+import Icon from 'components/Icon'
+
+const arrowLeftStyles = { position: 'absolute' }
+
+const Header = ({ title, className, hasArrowLeft }) => {
+  return (
+    <header className={className}>
+      {hasArrowLeft && (
+        <div style={arrowLeftStyles}>
+          <Link href="/">
+            <a>
+              <Icon name={'arrowLeft'} />
+            </a>
+          </Link>
+        </div>
+      )}
+      {title}
+    </header>
+  )
 }
 
 Header.propTypes = {
   title: PropTypes.element,
-  className: PropTypes.string
+  className: PropTypes.string,
+  hasArrowLeft: PropTypes.bool
 }
 
 export default Header

@@ -1,0 +1,4 @@
+.sectionHeader {
+  padding-top: var(--padding-top-lg);
+  padding-bottom: var(--padding-bottom-sm);
+}

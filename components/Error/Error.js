@@ -9,8 +9,9 @@ const Error = ({ text }) => {
   return (
     <div className={styles.error}>
       <Text
+        type={'heading'}
+        level={2}
         weight={'bold'}
-        size={'lg'}
         text={text}
         color={'red'}
         align={'center'}

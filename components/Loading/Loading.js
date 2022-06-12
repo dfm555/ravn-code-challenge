@@ -10,9 +10,10 @@ const Loading = ({ text }) => {
     <div className={styles.loading}>
       <Icon name={'spinner'} />
       <Text
+        type={'heading'}
+        level={2}
         className={styles.loading__text}
         text={text}
-        size={'lg'}
         weight={'bold'}
       />
     </div>

@@ -3,6 +3,11 @@
   font-weight: var(--font-weight-normal);
 }
 
+.text :is(h1, h2, h3, h4, h5) {
+  font-size: var(--font-size-lg);
+  font-weight: inherit;
+}
+
 .text--black {
   color: var(--font-color-black);
 }
