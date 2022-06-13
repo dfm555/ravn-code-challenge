@@ -10,3 +10,4 @@ export const getKey = path => (pageIndex, previousPageData) => {
   if (previousPageData && !previousPageData?.results) return null
   return `${path}?page=${pageIndex}`
 }
+

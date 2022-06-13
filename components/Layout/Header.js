@@ -17,7 +17,9 @@ const Header = ({ title, className, hasArrowLeft }) => {
           </Link>
         </div>
       )}
-      {title}
+      <Link href="/">
+        <span>{title}</span>
+      </Link>
     </header>
   )
 }

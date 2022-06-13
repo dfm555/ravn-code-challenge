@@ -34,7 +34,7 @@ Text.propTypes = {
   type: PropTypes.oneOf(['heading', 'paragraph']),
   size: PropTypes.oneOf(['md', 'lg']),
   level: PropTypes.oneOf([1, 2, 3, 4, 5]),
-  align: PropTypes.oneOf(['right', 'center']),
+  align: PropTypes.oneOf(['right', 'center', 'left']),
   color: PropTypes.oneOf(['black', 'red', 'white']),
   weight: PropTypes.oneOf(['bold', 'normal'])
 }

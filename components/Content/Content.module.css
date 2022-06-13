@@ -1,0 +1,8 @@
+@media screen and (min-width: 1024px) {
+  .content {
+    position: sticky;
+    top: 5rem;
+    align-self: start;
+    margin: 0 100px;
+  }
+}

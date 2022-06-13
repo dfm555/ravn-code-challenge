@@ -1,51 +1,70 @@
-import InfiniteScroll from 'react-infinite-scroll-component'
-
-import { useInfiniteRequest } from 'hooks/useInfiniteRequest'
+import { useEffect, useState, useCallback } from 'react'
+import { useRouter } from 'next/router'
 
 import Layout from 'components/Layout'
 import Text from 'components/Text'
-import Loading from 'components/Loading'
-import Error from 'components/Error'
-import PersonCell from 'components/PersonCell'
+import Nav from 'components/Nav'
+import Content from 'components/Content'
 
-const PATH = '/character'
+import useMediaQuery from 'hooks/useMediaQuery'
 
-const Index = () => {
-  const { data, isError, size, setSize } = useInfiniteRequest(PATH)
+const DEFAULT_TITLE = 'Characters of Rick and Morty'
+
+const Home = () => {
+  const router = useRouter()
+  const characterId = router.query?.character
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
+
+  const [showNav, setShowNav] = useState(true)
+  const [headerTitle, setHeaderTitle] = useState(DEFAULT_TITLE)
+
+  useEffect(() => {
+    if (characterId) {
+      setShowNav(false)
+    } else {
+      setShowNav(true)
+      setHeaderTitle(DEFAULT_TITLE)
+    }
+  }, [characterId])
+
+  useEffect(() => {
+    if (isDesktop) {
+      setHeaderTitle(DEFAULT_TITLE)
+      setShowNav(true)
+    } else {
+      if (characterId) {
+        setShowNav(false)
+      }
+    }
+  }, [isDesktop, characterId])
+
+  const setTitle = useCallback(
+    title => {
+      if (title && !isDesktop) {
+        setHeaderTitle(title)
+      }
+    },
+    [isDesktop]
+  )
+
   return (
     <Layout
+      hasArrowLeft={!!(!isDesktop && characterId)}
       headerTitle={
         <Text
-          text={'Characters of Rick and Morty'}
+          text={headerTitle}
           color={'white'}
-          align={'center'}
+          align={isDesktop ? 'left' : 'center'}
           size={'lg'}
         />
       }
     >
-      {isError && <Error text={'Failed to Load Data'} />}
-      {data && (
-        <InfiniteScroll
-          next={() => setSize(size + 1)}
-          dataLength={data.length}
-          hasMore={data.length <= data[0].info.pages}
-          loader={<Loading text={'Loading'} />}
-        >
-          {data
-            .flatMap(item => item.results)
-            .map((character, index) => (
-              <PersonCell
-                key={index}
-                id={character.id}
-                name={character.name}
-                species={character.species}
-                homeWorld={character.location.name}
-              />
-            ))}
-        </InfiniteScroll>
-      )}
+      <>
+        {showNav && <Nav />}
+        {characterId && <Content id={characterId} setTitle={setTitle} />}
+      </>
     </Layout>
   )
 }
 
-export default Index
+export default Home

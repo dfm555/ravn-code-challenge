@@ -1,17 +1,25 @@
 .layout {
-  max-width: var(--max-width-content);
   margin: 0 auto;
 }
 
 .layout__header {
   position: sticky;
   top: 0;
-  background: var(--ravn-black);
   padding: var(--padding-top) var(--padding-right) var(--padding-bottom)
     var(--padding-left);
+  background: var(--ravn-black);
 }
 
 .layout__content {
   padding-right: var(--padding-right);
   padding-left: var(--padding-left);
+}
+
+@media screen and (min-width: 1024px) {
+  .layout__content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    grid-template-areas: 'nav content';
+    align-items: start;
+  }
 }

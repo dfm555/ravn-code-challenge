@@ -1,5 +1,6 @@
+import { useCallback } from 'react'
+import { useRouter } from 'next/router'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
 
 import Text from 'components/Text'
 import Icon from 'components/Icon'
@@ -7,8 +8,17 @@ import Icon from 'components/Icon'
 import styles from './PersonCell.module.css'
 
 const PersonCell = ({ id, name, species, homeWorld }) => {
+  const router = useRouter()
+
+  const updateURL = useCallback(
+    id => {
+      router.push(`/?character=${id}`, undefined, { shallow: true }).then()
+    },
+    [router]
+  )
+
   return (
-    <div className={styles.personCell}>
+    <div className={styles.personCell} onClick={() => updateURL(id)}>
       <div className={styles.personCell__elements}>
         <Text
           type={'heading'}
@@ -19,11 +29,7 @@ const PersonCell = ({ id, name, species, homeWorld }) => {
         />
         <Text text={`${species} from ${homeWorld}`} />
       </div>
-      <Link href={`/character/${id}`}>
-        <a>
-          <Icon name={'angleRight'} size={'sm'} />
-        </a>
-      </Link>
+      <Icon name={'angleRight'} size={'sm'} />
     </div>
   )
 }
