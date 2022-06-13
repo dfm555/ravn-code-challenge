@@ -1,6 +1,5 @@
 @media screen and (min-width: 1024px) {
   .nav {
-    overflow-y: scroll;
     max-width: var(--max-width-nav);
     border-right: 1px solid var(--border-color);
   }
