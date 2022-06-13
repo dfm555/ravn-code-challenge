@@ -26,7 +26,6 @@ describe('util/removeObjectKeys', () => {
   }
   test('should remove object keys to format my object data', () => {
     const keys = ['id', 'name', 'status']
-    console.log(removeObjectKeys(character, keys))
     expect(removeObjectKeys(character, keys)).toMatchObject({
       id: 1,
       name: 'Rick Sanchez',
